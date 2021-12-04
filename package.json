@@ -1,0 +1,17 @@
+{
+  "name": "pomodoro-timer",
+  "packageManager": "yarn@3.1.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "postcss-preset-env": "^7.0.1",
+    "prettier": "^2.5.1",
+    "vite": "^2.6.14"
+  }
+}
