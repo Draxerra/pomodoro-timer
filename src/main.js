@@ -22,27 +22,21 @@ startTimerBtn.addEventListener("click", () => {
       minutes = ~~(currentDuration / 60);
       seconds = padSeconds(currentDuration % 60);
       const perc = (currentDuration / duration) * 100;
+      const transPerc = perc === 0 ? perc : Math.min(perc + 10, 100);
 
       timerText.textContent = `${minutes}:${seconds}`;
-
-      timerProgress.style.backgroundImage = `
-            conic-gradient(
-                from 0.5turn,
-                var(--clr-error) ${perc}%,
-                transparent ${perc}%
-            )`.trim();
+      timerProgress.style.setProperty("--clr-perc", `${perc}%`);
+      timerProgress.style.setProperty("--trans-perc", `${transPerc}%`);
 
       if (currentDuration === 0) {
-        return clearInterval(interval);
+        clearInterval(interval);
+      } else {
+        currentDuration -= 1;
       }
-
-      currentDuration -= 1;
     }, 1000);
-    console.log(interval);
   } else {
     startTimerBtn.textContent = "Start";
     startTimerBtn.ariaLabel = "Start Timer";
-    console.log(interval);
     clearInterval(interval);
   }
 });

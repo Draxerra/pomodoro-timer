@@ -30,8 +30,6 @@
   --spacing-sm: calc(var(--spacing-m) / 2);
   --spacing-m: 1rem;
   --spacing-la: calc(var(--spacing-m) * 2);
-  --spacing-xl: calc(var(--spacing-m) * 4);
-  --spacing-xxl: calc(var(--spacing-m) * 8);
 }
 
 .clr-surface-text {
