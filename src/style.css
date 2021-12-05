@@ -1,4 +1,14 @@
-@custom-media --sm-and-up (min-width: 30em);
+@custom-media --sm-and-up (min-width: 40em);
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Bebas Neue Book"),
+       url(/assets/fonts/bebasneue-book-webfont.woff2) format("woff2"),
+       url(/assets/fonts/bebasneue-book-webfont.woff) format("woff");
+}
 
 :root {
   --hue: 250;
@@ -24,16 +34,6 @@
   --spacing-la: calc(var(--spacing-m) * 2);
   --spacing-xl: calc(var(--spacing-m) * 4);
   --spacing-xxl: calc(var(--spacing-m) * 8);
-}
-
-@font-face {
-  font-family: "Bebas Neue Book";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local("Bebas Neue Book"),
-       url(/assets/fonts/bebasneue-book-webfont.woff2) format("woff2"),
-       url(/assets/fonts/bebasneue-book-webfont.woff) format("woff");
 }
 
 
@@ -113,9 +113,9 @@ section {
     inset: 0;
 
     border-radius: inherit;
-    padding: 5px;
+    padding: 10px;
 
-    background-image: linear-gradient(45deg, var(--clr-error) 0% 75%, transparent 75% 100%);
+    background-image: conic-gradient(from 0.5turn, var(--clr-error) 55%, transparent 75%);
     mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
     mask-composite: exclude;
 
@@ -175,8 +175,7 @@ img, svg {
 }
 
 .fs-xl {
-  font-size: var(--fs-xl);
-  font-family: 'Bebas Neue Book', 'system-ui', sans-serif;
+  font: var(--fs-xl) 'Bebas Neue Book', 'system-ui', sans-serif;
   letter-spacing: 0.04em;
   text-indent: 0.04em;
 }
