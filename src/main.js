@@ -5,26 +5,25 @@ const timerText = document.querySelector("#timer-text");
 const startTimerBtn = document.querySelector("#start-timer-btn");
 
 let interval = null;
+let [minutes, seconds] = timerText.textContent.split(":");
+const duration = parseInt(minutes) * 60 + parseInt(seconds);
+let currentDuration = duration;
 
 function padSeconds(string) {
   return (new Array(3).join("0") + string).slice(-2);
 }
 
 startTimerBtn.addEventListener("click", () => {
-  const [minutes, seconds] = timerText.textContent.split(":");
-  const duration = parseInt(minutes) * 60 + parseInt(seconds);
-
   if (startTimerBtn.textContent.trim() === "Start") {
     startTimerBtn.textContent = "Stop";
     startTimerBtn.ariaLabel = "Stop Timer";
 
-    let currentDuration = duration;
     interval = setInterval(() => {
-      const currMinutes = ~~(currentDuration / 60);
-      const currSeconds = padSeconds(currentDuration % 60);
+      minutes = ~~(currentDuration / 60);
+      seconds = padSeconds(currentDuration % 60);
       const perc = (currentDuration / duration) * 100;
 
-      timerText.textContent = `${currMinutes}:${currSeconds}`;
+      timerText.textContent = `${minutes}:${seconds}`;
 
       timerProgress.style.backgroundImage = `
             conic-gradient(

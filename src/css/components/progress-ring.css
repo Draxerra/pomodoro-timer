@@ -1,5 +1,4 @@
 .progress-ring {
-  content: "";
   position: absolute;
   inset: 0;
 
@@ -14,5 +13,5 @@
   mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
   mask-composite: exclude;
 
-  pointer-events: none;
+  z-index: -1;
 }
