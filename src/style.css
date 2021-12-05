@@ -1,9 +1,196 @@
+@custom-media --sm-and-up (min-width: 30em);
+
+:root {
+  --hue: 250;
+  --saturation: 5%;
+
+  --clr-surface: hsl(var(--hue) var(--saturation) 20%);
+  --clr-surface2: hsl(var(--hue) var(--saturation) 10%);
+  --clr-surface-transparent: hsl(var(--hue) var(--saturation) 100% / 0.25);
+
+  --clr-surface-text: hsl(var(--hue) var(--saturation) 90%);
+  --clr-surface-text-transparent: hsl(var(--hue) var(--saturation) 0% / 0.25);
+
+  --clr-surface-gradient: radial-gradient(75% 75% at 50% 25%, var(--clr-surface) 0%, var(--clr-surface2) 100%);
+  --clr-surface-text-gradient: linear-gradient(to bottom, white 0%, var(--clr-surface-text) 100%);
+
+  --clr-error: hsl(0 90% 30%);
+  --clr-success: hsl(150 90% 30%);
+
+  --fs-xl: clamp(6rem, 10vmin + 4rem, 12rem);
+
+  --spacing-sm: calc(var(--spacing-m) / 2);
+  --spacing-m: 1rem;
+  --spacing-la: calc(var(--spacing-m) * 2);
+  --spacing-xl: calc(var(--spacing-m) * 4);
+  --spacing-xxl: calc(var(--spacing-m) * 8);
+}
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Bebas Neue Book"),
+       url(/assets/fonts/bebasneue-book-webfont.woff2) format("woff2"),
+       url(/assets/fonts/bebasneue-book-webfont.woff) format("woff");
+}
+
+
+
+/* Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html {
+  font-family: 'system-ui', sans-serif;
+}
+
+html, body {
   block-size: 100%;
 }
 
-body {
+button, input {
+  font: unset;
+  line-height: unset;
+  letter-spacing: unset;
+}
+
+svg, path {
+  fill: currentColor;
+}
+
+:focus-visible {
+  outline: 1px solid var(--clr-surface-text);
+  outline-offset: 0.5ch;
+}
+
+
+
+/* Main Styles */
+main {
   display: grid;
   place-content: center;
   min-block-size: 100%;
+  padding-inline: var(--spacing-m);
+
+  background-color: var(--clr-surface);
+}
+
+section {
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  place-items: center;
+  justify-self: stretch;
+  gap: var(--spacing-la);
+
+  position: relative;
+
+  background-image: var(--clr-surface-gradient);
+
+  border-radius: 2ex;
+  padding-block: var(--spacing-la);
+  padding-inline: var(--spacing-m);
+
+  box-shadow:
+    -5px 15px 50px black,
+    5px -15px 50px var(--clr-surface-transparent),
+    inset 0px 0px 100px var(--clr-surface-text-transparent);
+
+  @media (--sm-and-up) {
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    padding-block: var(--spacing-xl);
+    padding-inline: var(--spacing-xxl);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+    padding: 5px;
+
+    background-image: linear-gradient(45deg, var(--clr-error) 0% 75%, transparent 75% 100%);
+    mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+    mask-composite: exclude;
+
+    pointer-events: none;
+  }
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  color: var(--clr-surface-text);
+
+  letter-spacing: 0.6em;
+  text-indent: 0.6em;
+
+  border: 0;
+  border-radius: 1ex;
+
+  cursor: pointer;
+  text-transform: uppercase;
+  padding-block: var(--spacing-m);
+  padding-inline: var(--spacing-sm);
+
+  &:hover {
+    background-color: var(--clr-surface-text);
+    color: var(--clr-surface);
+  }
+}
+
+img, svg {
+  display: block;
+  block-size: auto;
+  max-inline-size: 100%;
+}
+
+.actions {
+  display: grid;
+  justify-items: center;
+}
+
+
+
+/* Utility Classes */
+.clr-surface-text {
+  background-image: var(--clr-surface-text-gradient);
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 4px 4px var(--clr-surface-text-transparent);
+
+  &:where(button):hover {
+    background-clip: initial;
+    background-image: none;
+  }
+}
+
+.fs-xl {
+  font-size: var(--fs-xl);
+  font-family: 'Bebas Neue Book', 'system-ui', sans-serif;
+  letter-spacing: 0.04em;
+  text-indent: 0.04em;
+}
+
+.sr-only {
+  height: 1px;
+  width: 1px;
+
+  position: absolute;
+
+  padding: 0;
+  margin: -1px;
+
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
 }
