@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: "system-ui", sans-serif;
+}
+
+html,
+body {
+  block-size: 100%;
+}
+
+button,
+input {
+  font: unset;
+  line-height: unset;
+  letter-spacing: unset;
+}
+
+svg,
+path {
+  fill: currentColor;
+}
+
+img,
+svg {
+  display: block;
+  block-size: auto;
+  max-inline-size: 100%;
+}
+
+:focus-visible {
+  outline: 1px solid var(--clr-surface-text);
+  outline-offset: 0.5ch;
+}
