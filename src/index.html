@@ -4,23 +4,30 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Pomodoro Timer</title>
     <script type="module" src="/main.js"></script>
   </head>
   <body>
     <main>
-      <h1 class="sr-only">Pomodoro Timer</h1>
       <section class="timer">
-        <h2 class="fs-xl clr-surface-text">15:00</h2>
-        <div class="buttons">
-          <button class="clr-surface-text">Start</button>
-          <button class="icon-btn" aria-label="Change Time">
+        <div class="progress-ring" id="timer-progress"></div>
+        <h1 class="fs-xl clr-surface-text" id="timer-text">15:00</h1>
+        <div class="buttons-container">
+          <button
+            class="clr-surface-text"
+            id="start-timer-btn"
+            aria-label="Start Timer"
+          >
+            Start
+          </button>
+          <button class="icon-btn" id="settings-btn" aria-label="Edit Time">
             <svg
               width="32"
               height="32"
               viewBox="0 0 32 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <g filter="url(#filter0_d_108_7)">
                 <path

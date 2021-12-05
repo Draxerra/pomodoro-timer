@@ -27,7 +27,7 @@ button {
   }
 }
 
-.buttons {
+.buttons-container {
   display: grid;
   justify-items: center;
 }

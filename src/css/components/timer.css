@@ -4,7 +4,6 @@
   display: grid;
   grid-template-rows: 1fr min-content;
   place-items: center;
-  justify-self: stretch;
   gap: var(--spacing-la);
 
   position: relative;
@@ -12,42 +11,14 @@
   background-image: var(--clr-surface-gradient);
 
   border-radius: 2ex;
-  padding-block: clamp(
-    var(--spacing-la),
-    3.333vw + 1.333rem,
-    var(--spacing-xl)
-  );
-  padding-inline: clamp(
-    var(--spacing-m),
-    11.667vw - 1.333rem,
-    var(--spacing-xxl)
-  );
+  padding: var(--spacing-la);
 
   box-shadow: -5px 15px 50px black,
     5px -15px 50px var(--clr-surface-transparent),
     inset 0px 0px 100px var(--clr-surface-text-transparent);
 
-  @media (--m-and-up) {
+  @media (--landscape) {
     aspect-ratio: 1;
     border-radius: 50%;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    border-radius: inherit;
-    padding: 10px;
-
-    background-image: conic-gradient(
-      from 0.5turn,
-      var(--clr-error) 55%,
-      transparent 75%
-    );
-    mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
-    mask-composite: exclude;
-
-    pointer-events: none;
   }
 }
