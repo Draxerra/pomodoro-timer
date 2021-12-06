@@ -5,6 +5,8 @@
 @import "/css/components/progress-ring.css";
 @import "/css/components/timer.css";
 
+@import "/css/utilities/screen-reader.css";
+
 body {
   background-color: var(--clr-surface);
 }

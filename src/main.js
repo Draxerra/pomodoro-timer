@@ -16,7 +16,7 @@ function padSeconds(string) {
 startTimerBtn.addEventListener("click", () => {
   if (startTimerBtn.textContent.trim() === "Start") {
     startTimerBtn.textContent = "Stop";
-    startTimerBtn.ariaLabel = "Stop Timer";
+    startTimerBtn.setAttribute("aria-label", "Stop Timer");
 
     interval = setInterval(() => {
       minutes = ~~(currentDuration / 60);
@@ -24,9 +24,15 @@ startTimerBtn.addEventListener("click", () => {
       const perc = (currentDuration / duration) * 100;
       const transPerc = perc === 0 ? perc : Math.min(perc + 10, 100);
 
-      timerText.textContent = `${minutes}:${seconds}`;
+      timerText.childNodes[0].textContent = `${minutes}:${seconds}`;
       timerProgress.style.setProperty("--clr-perc", `${perc}%`);
       timerProgress.style.setProperty("--trans-perc", `${transPerc}%`);
+
+      if (currentDuration % 5 === 0) {
+        timerText.setAttribute("aria-live", "polite");
+      } else {
+        timerText.removeAttribute("aria-live", "polite");
+      }
 
       if (currentDuration === 0) {
         clearInterval(interval);
@@ -36,7 +42,7 @@ startTimerBtn.addEventListener("click", () => {
     }, 1000);
   } else {
     startTimerBtn.textContent = "Start";
-    startTimerBtn.ariaLabel = "Start Timer";
+    startTimerBtn.setAttribute("aria-label", "Start Timer");
     clearInterval(interval);
   }
 });

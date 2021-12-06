@@ -11,8 +11,10 @@
     <main>
       <section class="timer">
         <div class="progress-ring" id="timer-progress"></div>
-        <h1 class="fs-xl clr-surface-text" id="timer-text">15:00</h1>
-        <div class="buttons-container">
+        <h1 class="fs-xl clr-surface-text" id="timer-text" role="timer">
+          15:00 <span class="sr-only"> remaining</span>
+        </h1>
+        <div class="buttons-container" role="group">
           <button
             class="clr-surface-text"
             id="start-timer-btn"
