@@ -5,6 +5,8 @@
 @import "/css/components/progress-ring.css";
 @import "/css/components/timer.css";
 
+@import "/css/utilities/flex.css";
+@import "/css/utilities/grid.css";
 @import "/css/utilities/screen-reader.css";
 
 body {
@@ -12,9 +14,6 @@ body {
 }
 
 main {
-  display: grid;
-  align-content: center;
-
   max-inline-size: 30rem;
   min-block-size: 100%;
 

@@ -1,12 +1,14 @@
 import "./style.css";
 
 const timerProgress = document.querySelector("#timer-progress");
-const timerText = document.querySelector("#timer-text");
+const timer = document.querySelector("#timer");
+const timerStatus = document.querySelector("#timer-status");
 const startTimerBtn = document.querySelector("#start-timer-btn");
 
 let interval = null;
-let [minutes, seconds] = timerText.textContent.split(":");
+let [minutes, seconds] = timer.textContent.split(":");
 const duration = parseInt(minutes) * 60 + parseInt(seconds);
+
 let currentDuration = duration;
 
 function padSeconds(string) {
@@ -20,18 +22,21 @@ startTimerBtn.addEventListener("click", () => {
 
     interval = setInterval(() => {
       minutes = ~~(currentDuration / 60);
-      seconds = padSeconds(currentDuration % 60);
+      seconds = currentDuration % 60;
+      const paddedSeconds = padSeconds(seconds);
       const perc = (currentDuration / duration) * 100;
       const transPerc = perc === 0 ? perc : Math.min(perc + 10, 100);
 
-      timerText.childNodes[0].textContent = `${minutes}:${seconds}`;
+      timer.setAttribute("datetime", `PT0H${minutes}M${paddedSeconds}S`);
+      timer.textContent = `${minutes}:${paddedSeconds}`;
+      timerStatus.textContent = `${minutes} minutes and ${seconds} seconds remaining.`;
       timerProgress.style.setProperty("--clr-perc", `${perc}%`);
       timerProgress.style.setProperty("--trans-perc", `${transPerc}%`);
 
-      if (currentDuration % 5 === 0) {
-        timerText.setAttribute("aria-live", "polite");
+      if (currentDuration % 10 === 0) {
+        timerStatus.setAttribute("role", "status");
       } else {
-        timerText.removeAttribute("aria-live", "polite");
+        timerStatus.removeAttribute("role");
       }
 
       if (currentDuration === 0) {

@@ -8,13 +8,23 @@
     <script type="module" src="/main.js"></script>
   </head>
   <body>
-    <main>
+    <main class="grid grid--align-content-center">
       <section class="timer">
+        <h1 class="sr-only">Pomodoro Timer</h1>
+        <p class="sr-only" id="timer-status">
+          15 minutes and 0 seconds remaining.
+        </p>
         <div class="progress-ring" id="timer-progress"></div>
-        <h1 class="fs-xl clr-surface-text" id="timer-text" role="timer">
-          15:00 <span class="sr-only"> remaining</span>
-        </h1>
-        <div class="buttons-container" role="group">
+        <time
+          class="fs-xl clr-surface-text flex"
+          id="timer"
+          role="timer"
+          datetime="PT0H15M0S"
+          aria-hidden="true"
+        >
+          15:00
+        </time>
+        <div class="grid grid--center" role="group">
           <button
             class="clr-surface-text"
             id="start-timer-btn"
@@ -22,7 +32,11 @@
           >
             Start
           </button>
-          <button class="icon-btn" id="settings-btn" aria-label="Edit Time">
+          <button
+            class="inline-flex flex--center"
+            id="settings-btn"
+            aria-label="Edit Time"
+          >
             <svg
               width="32"
               height="32"

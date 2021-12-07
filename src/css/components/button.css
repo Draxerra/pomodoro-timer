@@ -1,8 +1,4 @@
 button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
   background-color: transparent;
   color: var(--clr-surface-text);
 
@@ -25,9 +21,4 @@ button {
   &.icon-btn {
     padding-block: var(--spacing-sm);
   }
-}
-
-.buttons-container {
-  display: grid;
-  justify-items: center;
 }
