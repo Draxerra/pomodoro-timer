@@ -1,8 +1,6 @@
+import vue from "@vitejs/plugin-vue";
+
 export default {
-  build: {
-    emptyOutDir: true,
-    outDir: "../dist",
-  },
-  cacheDir: "../.vite",
-  root: "src",
+  cacheDir: ".vite",
+  plugins: [vue()],
 };

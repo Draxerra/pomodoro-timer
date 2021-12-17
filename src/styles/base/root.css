@@ -1,0 +1,31 @@
+:root {
+  --hue: 250;
+  --saturation: 5%;
+
+  --clr-surface: hsl(var(--hue) var(--saturation) 20%);
+  --clr-surface2: hsl(var(--hue) var(--saturation) 10%);
+  --clr-surface-transparent: hsl(var(--hue) var(--saturation) 100% / 0.25);
+
+  --clr-surface-text: hsl(var(--hue) var(--saturation) 90%);
+  --clr-surface-text-transparent: hsl(var(--hue) var(--saturation) 0% / 0.25);
+
+  --clr-surface-gradient: radial-gradient(
+    75% 75% at 50% 25%,
+    var(--clr-surface) 0%,
+    var(--clr-surface2) 100%
+  );
+  --clr-surface-text-gradient: linear-gradient(
+    to bottom,
+    white 0%,
+    var(--clr-surface-text) 100%
+  );
+
+  --clr-error: hsl(0 90% 30%);
+  --clr-success: hsl(150 90% 30%);
+
+  --fs-xl: clamp(6rem, 10vmin + 4rem, 12rem);
+
+  --spacing-sm: calc(var(--spacing-m) / 2);
+  --spacing-m: 1rem;
+  --spacing-la: calc(var(--spacing-m) * 2);
+}

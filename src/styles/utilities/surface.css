@@ -1,0 +1,11 @@
+.clr-surface-text {
+  background-image: var(--clr-surface-text-gradient);
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 4px 4px var(--clr-surface-text-transparent);
+
+  &:where(button):hover {
+    background-clip: initial;
+    background-image: none;
+  }
+}
