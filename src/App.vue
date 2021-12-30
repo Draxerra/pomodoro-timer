@@ -26,6 +26,6 @@ main {
   min-block-size: 100%;
 
   padding-inline: var(--spacing-m);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 </style>
